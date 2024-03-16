@@ -1,4 +1,4 @@
-# openIKED for openSUSE
+# OpenIKED for openSUSE
 
 [![License](https://img.shields.io/github/license/alexander-naumov/openiked-opensuse)](https://github.com/alexander-naumov/openiked-opensuse/LICENSE)
 [![#openiked on matrix.org](https://img.shields.io/badge/matrix-%23openiked-blue)](https://app.element.io/#/room/#openiked:matrix.org)
@@ -7,9 +7,10 @@
 
 <img align="right" src="openiked.png" height="250">
 
-OpenIKED is a FREE implementation of the Internet Key Exchange (IKEv2) protocol
-which performs mutual authentication and which establishes and maintains IPsec VPN
-security policies and associations (SAs) between peers.
+[OpenIKED](https://www.openiked.org) is a FREE implementation of the
+Internet Key Exchange (IKEv2) protocol which performs mutual authentication
+and which establishes and maintains IPsec VPN security policies
+and associations (SAs) between peers.
 
 The IKEv2 protocol is defined in RFC 5996, which combines and updates the previous
 standards: ISAKMP/Oakley (RFC 2408), IKE (RFC 2409), and the Internet DOI (RFC 2407).
