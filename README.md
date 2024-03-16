@@ -5,6 +5,8 @@
 [![#openiked on libera.chat](https://img.shields.io/badge/IRC-%23openiked-blue)](https://kiwiirc.com/nextclient/irc.libera.chat/#openiked)
 [![build result](https://build.opensuse.org/projects/network:vpn/packages/openiked/badge.svg?type=percent)](https://build.opensuse.org/package/show/network:vpn/openiked)
 
+<img align="right" src="openiked.png" height="250">
+
 OpenIKED is a FREE implementation of the Internet Key Exchange (IKEv2) protocol
 which performs mutual authentication and which establishes and maintains IPsec VPN
 security policies and associations (SAs) between peers.
