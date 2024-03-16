@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Fri Jan 18 19:24:44 CET 2024 - alexander_naumov@opensuse.org
+
+- OpenIKED 7.3:
+  * Reexecute child processes after forking for better process isolation
+  * Support for new route-based sec(4) tunnels on OpenBSD
+  * Handle full x509 chains in CERT payloads
+  * Support multiple name servers per interface on Linux.
+  * Refactored internal ibuf API for OpenBSD 7.4
+  * Optionally use libssytemd to configure DNS via DBUS instead
+    of calling resolvectl cli tool on Linux
+  * Dropped libapparmor dependency on Linux in favor of directly
+    using the /proc interface.
+    This allows us to open file descriptors before dropping privileges
+    and change policy afterwards allowing for even stricter apparmor configs.
+  * Fixed the openssl config used by ikectl to allow renewing expired certificates
+  * Sync compatibility layer with OpenBSD
+  * Fixed some memory leaks
+
+-------------------------------------------------------------------
+Tue May 02 13:37:14 CET 2023 - alexander_naumov@opensuse.org
+
+- OpenIKED 7.2:
+  * Added iked connection statistics counters that can be viewed with
+    'ikectl show stats'
+  * Added support for sending certificate chains in multiple CERT payloads.
+  * Added OpenIKED vendor ID payload to improve interoperability with old versions
+  * Improved policy lookup by respecting the srcnat property
+  * Fixed Child SA nonce comparison bug which lead to sporadic interoperability
+    failures
+  * Fixed interoperability with implementations sending more than one CERT payload
+  * Fixed a bug where NAT-T was not working correctly on Linux
+  * Fixed various bugs and memory leaks.
+
+- adding build dependency: systemd-devel
+
+-------------------------------------------------------------------
+Tue May 02 13:16:39 CET 2023 - alexander_naumov@opensuse.org
+
+- OpenIKED 7.1:
+  * Added 'ikectl show certinfo' command to print loaded CAs and certificates
+  * Hardened default build flags
+  * Changed the "proto" config field to optionally accept a list of protocols
+  * Added support for using AppArmor to limit process privileges on Linux.
+  * Take "Destination ID" payload into consideration when matching policy for
+    incoming handshake to allow finer control over flow configuration
+  * Improved IKEv2 Message Fragmentation with more reliable retransmission logic
+  * Fixed handshake proposal matching bug
+  * Fixed a bug where authentication via local certificates did not work as intended
+  * Fixed a bug where alive timer was not reset on config reloading
+  * Fixed a bug where iked sent zero-prefixed NAT-T messages on port 500, causing
+    parsing errors.
+  * Fixed several memory leaks
+  * Added a new portable regression test
+
+-------------------------------------------------------------------
+Fri Jan 14 15:37:48 CET 2022 - alexander_naumov@opensuse.org
+
+- OpenIKED 7.0:
+  * Added client-side support for DNS configuration via OpenBSD
+    resolvd(8) and systemd-resolved(8)
+  * Added an experimental post-quantum hybrid key exchange method
+    based on Streamlined NTRU Prime (coupled with X25519) as sntrup761x25519
+  * Added support to compile and run on macOS
+  * Increased default data bytes limit for Child SAs to 4 GB,
+    preventing excessive rekeying and lost data in high performance setups.
+  * Fixed a problem where no flows are loaded when a single config
+    address without pool is configured
+  * Fixed a bug that broke pfkey acquire on non-OpenBSD systems

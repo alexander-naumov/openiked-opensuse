@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenIKED IKEv2 Daemon
+Documentation=man:iked(8)
+After=network.target
+
+[Service]
+Type=notify
+ExecStart=/usr/sbin/iked
+ExecReload=/usr/sbin/ikectl reload
+KillMode=process
+RestartPreventExitStatus=255
+
+[Install]
+WantedBy=multi-user.target
