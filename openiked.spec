@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 Name:           openiked
 Version:        7.3
 Release:        0
@@ -54,6 +53,7 @@ make install DESTDIR=%buildroot
 mkdir -p %{buildroot}/etc
 mkdir -p %{buildroot}/etc/ssl/
 mkdir -p %{buildroot}%{_sbindir}
+mkdir -p %{buildroot}%{_sysconfdir}/iked/private/
 
 mv %{buildroot}/usr/local/sbin/iked %{buildroot}%{_sbindir}/iked
 mv %{buildroot}/usr/local/sbin/ikectl %{buildroot}%{_sbindir}/ikectl
@@ -82,6 +82,7 @@ install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/openiked.service
 %attr(555,root,root) %{_sbindir}/ikectl
 %attr(555,root,root) %{_sbindir}/iked
 %attr(0644,root,root) %{_unitdir}/openiked.service
+%attr(0700,root,root) %{_sysconfdir}/iked/
 %{_mandir}/man5/iked.conf.5.gz
 %{_mandir}/man8/ikectl.8.gz
 %{_mandir}/man8/iked.8.gz
