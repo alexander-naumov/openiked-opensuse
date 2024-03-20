@@ -1,6 +1,7 @@
 -------------------------------------------------------------------
 Wed Mar 20 16:09:22 CET 2024 - alexander_naumov@opensuse.org
 
+- Fix build warning: add 'Group' to the spec file.
 - Update %{_sysconfdir} structure
 - Add openiked-keygen.service/target for RSA public key generation
 

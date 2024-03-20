@@ -19,6 +19,7 @@ Name:           openiked
 Version:        7.3
 Release:        0
 Summary:        Internet Key Exchange version 2 (IKEv2) daemon
+Group:          Productivity/Networking/Security
 License:        ISC 
 URL:            https://github.com/openiked/openiked-portable
 
