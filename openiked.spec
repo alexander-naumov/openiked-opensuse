@@ -21,8 +21,13 @@ Release:        0
 Summary:        Internet Key Exchange version 2 (IKEv2) daemon
 License:        ISC 
 URL:            https://github.com/openiked/openiked-portable
+
 Source:         %{name}-portable-%{version}.tar.xz
 Source1:        openiked.service
+Source2:        openiked-keygen.service
+Source3:        openiked-keygen.target
+Source4:        openiked-keygen
+
 BuildRequires:  make
 BuildRequires:  cmake
 BuildRequires:  gcc
@@ -48,30 +53,44 @@ make
 
 %install
 cd build
-
 make install DESTDIR=%buildroot
+
 mkdir -p %{buildroot}/etc
 mkdir -p %{buildroot}/etc/ssl/
 mkdir -p %{buildroot}%{_sbindir}
 mkdir -p %{buildroot}%{_sysconfdir}/iked/private/
+mkdir -p %{buildroot}/usr/libexec/openiked
 
-mv %{buildroot}/usr/local/sbin/iked %{buildroot}%{_sbindir}/iked
+mv %{buildroot}/usr/local/sbin/iked   %{buildroot}%{_sbindir}/iked
 mv %{buildroot}/usr/local/sbin/ikectl %{buildroot}%{_sbindir}/ikectl
+
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/openiked.service
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/openiked-keygen.service
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/openiked-keygen.target
+install -D -m 0644 %{SOURCE4} %{buildroot}/usr/libexec/openiked/openiked-keygen
+
 #groupadd _iked
 #useradd -M -d /var/empty -s $(which nologin) -c "IKEv2 Daemon" -g _iked _iked
 
 %pre
 %service_add_pre openiked.service
+%service_add_pre openiked-keygen.service
+%service_add_pre openiked-keygen.target
 
 %preun
 %service_del_preun openiked.service
+%service_del_preun openiked-keygen.service
+%service_del_preun openiked-keygen.target
 
 %postun
 %service_del_postun openiked.service
+%service_del_postun openiked-keygen.service
+%service_del_postun openiked-keygen.target
 
 %post
 %service_add_post openiked.service
+%service_add_post openiked-keygen.service
+%service_add_post openiked-keygen.target
 
 
 %files
@@ -81,8 +100,13 @@ install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/openiked.service
 %config  /etc/ssl/ikex509v3.cnf
 %attr(555,root,root) %{_sbindir}/ikectl
 %attr(555,root,root) %{_sbindir}/iked
-%attr(0644,root,root) %{_unitdir}/openiked.service
 %attr(0700,root,root) %{_sysconfdir}/iked/
+%attr(0644,root,root) %{_unitdir}/openiked.service
+%attr(0644,root,root) %{_unitdir}/openiked-keygen.service
+%attr(0644,root,root) %{_unitdir}/openiked-keygen.target
+%attr(0700,root,root) /usr/libexec/
+%attr(0700,root,root) /usr/libexec/openiked/
+%attr(0744,root,root) /usr/libexec/openiked/openiked-keygen
 %{_mandir}/man5/iked.conf.5.gz
 %{_mandir}/man8/ikectl.8.gz
 %{_mandir}/man8/iked.8.gz
