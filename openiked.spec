@@ -59,6 +59,7 @@ make install DESTDIR=%buildroot
 mkdir -p %{buildroot}/etc
 mkdir -p %{buildroot}/etc/ssl/
 mkdir -p %{buildroot}%{_sbindir}
+mkdir -p %{buildroot}/var/empty
 mkdir -p %{buildroot}%{_sysconfdir}/iked/private/
 mkdir -p %{buildroot}/usr/libexec/openiked
 
@@ -105,6 +106,7 @@ install -D -m 0644 %{SOURCE4} %{buildroot}/usr/libexec/openiked/openiked-keygen
 %attr(0644,root,root) %{_unitdir}/openiked.service
 %attr(0644,root,root) %{_unitdir}/openiked-keygen.service
 %attr(0644,root,root) %{_unitdir}/openiked-keygen.target
+%attr(0700,root,root) /var/empty
 %attr(0700,root,root) /usr/libexec/
 %attr(0700,root,root) /usr/libexec/openiked/
 %attr(0744,root,root) /usr/libexec/openiked/openiked-keygen
