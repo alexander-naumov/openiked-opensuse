@@ -5,6 +5,7 @@ Wed Mar 20 16:09:22 CET 2024 - alexander_naumov@opensuse.org
 - Update %{_sysconfdir} structure
 - Add openiked-keygen.service/target for RSA public key generation
 - Add /var/empty directory (needed for chroot)
+- Change permissions for /etc/iked/ directory
 
 -------------------------------------------------------------------
 Fri Jan 18 19:24:44 CET 2024 - alexander_naumov@opensuse.org

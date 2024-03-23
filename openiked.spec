@@ -102,7 +102,7 @@ install -D -m 0644 %{SOURCE4} %{buildroot}/usr/libexec/openiked/openiked-keygen
 %config  /etc/ssl/ikex509v3.cnf
 %attr(555,root,root) %{_sbindir}/ikectl
 %attr(555,root,root) %{_sbindir}/iked
-%attr(0700,root,root) %{_sysconfdir}/iked/
+%attr(0755,root,root) %{_sysconfdir}/iked/
 %attr(0644,root,root) %{_unitdir}/openiked.service
 %attr(0644,root,root) %{_unitdir}/openiked-keygen.service
 %attr(0644,root,root) %{_unitdir}/openiked-keygen.target
