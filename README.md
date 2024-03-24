@@ -12,8 +12,8 @@ Internet Key Exchange (IKEv2) protocol which performs mutual authentication
 and which establishes and maintains IPsec VPN security policies
 and associations (SAs) between peers.
 
-The [IKEv2 protocol](https://en.wikipedia.org/wiki/Internet_Key_Exchange)
-is defined in [RFC 5996](https://datatracker.ietf.org/doc/html/rfc5996),
+OpenIKED only supports the [IKEv2 protocol](https://en.wikipedia.org/wiki/Internet_Key_Exchange).
+It is defined in [RFC 5996](https://datatracker.ietf.org/doc/html/rfc5996),
 which combines and updates the previous standards:
 ISAKMP/Oakley (RFC 2408), IKE (RFC 2409), and the Internet DOI (RFC 2407).
 
